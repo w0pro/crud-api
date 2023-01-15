@@ -1,15 +1,18 @@
 import * as http from "node:http"
 import {requestHandler} from "./handlers/handler.js";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 
-console.log(requestHandler)
+
+
 
 const server = http.createServer(requestHandler)
 
 server.listen({
     host: 'localhost',
-    port: 4000},()=> {
-    console.log(`server is listening on http://localhost:4000`);
+    port: process.env.PORT},()=> {
+    console.log(`server is listening on http://localhost:${process.env.PORT}`);
 
 })
 
